@@ -54,7 +54,7 @@ int get_block_size() {
   /* YOUR CODE GOES HERE */
   flush_cache();
   addr_t i = 0;
-  while(access_cache(i) == FALSE){
+  while(access_cache(i) == TRUE){
     printf("yo");
     i += 4;
   }
