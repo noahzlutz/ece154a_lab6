@@ -57,8 +57,8 @@ int get_block_size() {
   /* YOUR CODE GOES HERE */
   flush_cache();
   addr_t adr = 0;
-  //access_cache(adr);
-  while(access_cache(adr) == 1){
+  bool_t call = access_cache(adr);
+  while(call == 1){
     adr += 1;
   }
   return adr;
