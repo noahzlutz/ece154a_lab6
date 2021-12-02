@@ -1,5 +1,6 @@
 /*
-YOUR NAME HERE
+Noah Lutz
+Teagan Connon
 ECE 154A - Fall 2012
 Lab 2 - Mystery Caches
 Due: 12/3/12, 11:00 pm
@@ -29,6 +30,8 @@ mystery2:
 */
 int get_cache_size(int block_size) {
   /* YOUR CODE GOES HERE */
+  flush_cache();
+
   
   return -1;
 }
@@ -38,6 +41,9 @@ int get_cache_size(int block_size) {
 */
 int get_cache_assoc(int size) {
   /* YOUR CODE GOES HERE */
+  flush_cache();
+
+
   return -1;
 }
 
@@ -46,7 +52,12 @@ int get_cache_assoc(int size) {
 */
 int get_block_size() {
   /* YOUR CODE GOES HERE */
-  return -1;
+  flush_cache();
+  addr_t i = 0;
+  while(access_cache(i)){
+    i += 4;
+  }
+  return i;
 }
 
 int main(void) {
