@@ -52,7 +52,7 @@ int get_cache_assoc(int size) {
 */
 int get_block_size() {
   /* YOUR CODE GOES HERE */
-  flush_cache();
+  //flush_cache();
   addr_t i = 0;
   while(access_cache(i) == TRUE){
     i += 4;
