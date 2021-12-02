@@ -31,6 +31,9 @@ mystery2:
 int get_cache_size(int block_size) {
   /* YOUR CODE GOES HERE */
   flush_cache();
+  addr_t adr = 0;
+  access_cache(adr);
+
 
   
   return -1;
@@ -53,12 +56,12 @@ int get_cache_assoc(int size) {
 int get_block_size() {
   /* YOUR CODE GOES HERE */
   flush_cache();
-  addr_t i = 0;
-  access_cache(0);
-  while(access_cache(i) == 1){
-    i += 1;
+  addr_t adr = 0;
+  //access_cache(adr);
+  while(access_cache(adr) == 1){
+    adr += 1;
   }
-  return i;
+  return adr;
 }
 
 int main(void) {
