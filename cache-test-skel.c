@@ -39,7 +39,7 @@ int get_cache_size(int block_size) {
   while(access_cache(0)){
     adr = block_size;
     
-    if(adr == block){
+    while(adr <= block){
       adr += block_size;
       access_cache(adr);
     }
