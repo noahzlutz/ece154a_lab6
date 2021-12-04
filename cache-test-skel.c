@@ -62,8 +62,8 @@ int get_cache_assoc(int size) {
   while(access_cache(0)){
     adr = size;
     n = 0;
-    
-    while(adr <= ways*n){
+
+    while(adr <= ways*size){
       adr += size;
       n += 1;
       access_cache(adr);
