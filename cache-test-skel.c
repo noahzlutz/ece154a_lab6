@@ -55,9 +55,15 @@ int get_cache_size(int block_size) {
 int get_cache_assoc(int size) {
   /* YOUR CODE GOES HERE */
   flush_cache();
-
-
-  return -1;
+  addr_t adr = 0;
+  access_cache(adr);
+  int n = 0;
+  while(access_cache(0)){
+    adr += size;
+    access_cache(adr);
+    n++;
+  }
+  return n;
 }
 
 /*
