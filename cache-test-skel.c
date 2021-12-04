@@ -7,17 +7,17 @@ Due: 12/3/12, 11:00 pm
 
 Mystery Cache Geometries:
 mystery0:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 64B
+    cache size = 4000kB
+    associativity = 16
 mystery1:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 4B
+    cache size = 4kB
+    associativity = 1 
 mystery2:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 32B
+    cache size = 4kB
+    associativity = 128
 */
 
 #include <stdlib.h>
@@ -30,9 +30,9 @@ mystery2:
 */
 int get_cache_size(int block_size) {
   /* YOUR CODE GOES HERE */
-  flush_cache();
+  flush_cache(); //clear cache
   addr_t adr = 0;
-  access_cache(adr);
+  access_cache(adr); //set adr 0 
 
   int block = block_size;
 
@@ -54,19 +54,21 @@ int get_cache_size(int block_size) {
 */
 int get_cache_assoc(int size) {
   /* YOUR CODE GOES HERE */
-  flush_cache();
+  flush_cache(); //clear cache
   addr_t adr = 0;
-  access_cache(adr);
+  access_cache(adr); //set adr 0 
+
   int n = 0;
-  int ways = 1;
+  int ways = 1; 
+
   while(access_cache(0)){
-    adr = size;
+    adr = size; //reset adr and asscoication
     n = 0;
 
-    while(adr <= ways*size){
+    while(adr <= ways*size){ //determine association
       adr += size;
       n += 1;
-      access_cache(adr);
+      access_cache(adr); //will overide adr 0 when loops back and fillls alll ways
     }
     
     ways += 1;
@@ -80,12 +82,12 @@ int get_cache_assoc(int size) {
 */
 int get_block_size() {
   /* YOUR CODE GOES HERE */
-  flush_cache();
+  flush_cache(); //clear cache
   addr_t adr = 0;
-  access_cache(adr);
+  access_cache(adr); //set adr 0 
   
   while(access_cache(adr) == 1){
-    adr += 1;
+    adr += 1; 
   }
   return adr;
 }
